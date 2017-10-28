@@ -33,9 +33,22 @@
 				<p> There are deterministic transportation and information lead times, though the total lead time is stochastic due to stockouts in upstream nodes. Each agent may have nonzero shortage and holding costs. When the game starts agents does not know when the game will finish and in each period they just select an order quantity and submit to their predecessor (supplier). The aim is minimizing long-run cost of the network given the assumption that each agent access only its own local information. <p>
 				<p> On the other hand, the game is a multi-agent cooperative decentralized partially observed Markov decision process, which are in NEXP complete of problems. So, we cannot solve them in reasonable amount of time. Here, a learning algorithm which provides close to optimal solution algorithm, is provided. <p>
 				<p> <em> Build the learning model </em> <p>
-				<p> An adjusted Deep Q-Network (DQN) model is used to solve to this problem. DQN is used to solve single agent games and extended to two agents zero-sum games. However, beer game is a cooperative non-zero-sum game. Using DQN directly results in a game that each agent minimizes its own cost not the whole cost of system. Thus, we cannot use it directly to solve the problem. We propose a feedback scheme to fix this issue and it enforces the agents to learn to minimize the whole cost of system. <p>
+				<p> An adjusted Deep Q-Network (DQN) model is used to solve to this problem. DQN is used to solve single agent games and extended to two agents zero-sum games. However, beer game is a cooperative non-zero-sum game. Using DQN directly results in a game that each agent minimizes its own cost not the whole cost of system. Thus, we cannot use it directly to solve the problem. We propose a feedback scheme to fix this issue and it enforces the agents to learn to minimize the whole cost of system. In this order we update the observed reward of each agent using:</p>
 				<img src="http://mathurl.com/y8auqxt8.png">
+				<p> in which we indeed penalize the agent with the summation of cost of other agents. Therefore, agents learn to minimize the total cost of system instead of just theirself cost. <p> 
 
+				<p> <em> Numerical Results</em> 
+				<p> Here we have the result of the case that wholesaler plays DQN, and other play base stock policy. In the following figure you see the result of no training.<p> 
+				<img src="before_training_100.jpg" alt="before training" width="583" height="480" align="middle"/> 
+				
+				<p> After 1000 of training episodes, it has hearnt that there is positive holding cost and it is better to keep its inventory level smaller. <p> 
+				<img src="1000_training_100.jpg" alt="after 1000 training episodes" width="583" height="480" align="middle"/> 
+
+				<p> After 2000 of training episodes, it has hearnt that there is no stock-out cost and it is better to keep the inventory its level negative. Also, as you see the whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
+				<img src="2000_training_100.jpg" alt="after 2000 training episodes" width="583" height="480" align="middle"/> 
+
+				<p> After 45000 of training episodes, it has hearnt almost the optimal policy, and plays in a way to not only keeps its inventory level and cost close to zero, but also plays in a way to minimize the total cost of the system. Apparently, whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
+				<img src="45000_training_100.jpg" alt="after 45000 training episodes" width="583" height="480" align="middle"/> 
 
 				<!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe> -->				
     		</div><!-- /.blurb -->
