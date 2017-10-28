@@ -19,7 +19,8 @@
         		<h1>You can find my blog posts here!</h1>
 				<p><em>Beer Game</em>. </p>
 				<p> The beer game is a widely used in-class game that is played in supply chain management classes to demonstrate a phenomenon known as the bullwhip effect. consists of a serial supply chain network with four agents---a retailer, a warehouse, a distributor, and a manufacturer. <p>
-				<img src="beer_game_slide.jpg"/>
+				<!-- alt="The agents of beer game"  -->
+				<img src="beer_game_slide.jpg"/> 		
 				<p> Customers with stochastic demand come to the retailer, and we assume they wait if the retailer does not have enough inventory; however, the retailer gets the penalty of shortage cost.  Same thing happens in other nodes, except the manufacturer node which has an unlimited source of supply. <p>
 				<p> There are deterministic transportation and information lead times, though the total lead time is stochastic due to stockouts in upstream nodes. Each agent may have nonzero shortage and holding costs. When the game starts agents does not know when the game will finish and in each period they just select an order quantity and submit to their predecessor (supplier). The aim is minimizing long-run cost of the network given the assumption that each agent access only its own local information. <p>
 				<p> On the other hand, the game is a multi-agent cooperative decentralized partially observed Markov decision process, which are in NEXP complete of problems. So, we cannot solve them in reasonable amount of time. Here, a learning algorithm which provides close to optimal solution algorithm, is provided. <p>
