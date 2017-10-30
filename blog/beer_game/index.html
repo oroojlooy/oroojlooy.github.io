@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<style>
+img {
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+		<title>Blog</title>
+		<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">		
+	</head>
+	<body>
+		<nav>
+    		<ul>
+        		<li><a href="/">Home</a></li>
+	        	<li><a href="/publications">Publications</a></li>
+        		<li><a href="/cv">CV</a></li>
+        		<li><a href="/blog">Blog</a></li>
+    		</ul>
+		</nav>
+		<div class="container">
+    		<div class="blurb">
+				<font size="+2"> <p><em>  <b> Beer Game  </b> </em>. </p> </font>
+				<p> The beer game is a widely used in-class game that is played in supply chain management classes to demonstrate a phenomenon known as the bullwhip effect. consists of a serial supply chain network with four agents---a retailer, a warehouse, a distributor, and a manufacturer. <p>
+				<!-- alt="The agents of beer game"  -->
+				<img src="beer_game_slide.jpg" alt="The agents of beer game" width="583" height="480" align="middle"/> 
+				<p> Customers with stochastic demand come to the retailer, and we assume they wait if the retailer does not have enough inventory; however, the retailer gets the penalty of shortage cost.  Same thing happens in other nodes, except the manufacturer node which has an unlimited source of supply. <p>
+				<p> There are deterministic transportation and information lead times, though the total lead time is stochastic due to stockouts in upstream nodes. Each agent may have nonzero shortage and holding costs. When the game starts agents does not know when the game will finish and in each period they just select an order quantity and submit to their predecessor (supplier). The aim is minimizing long-run cost of the network given the assumption that each agent access only its own local information. <p>
+				<p> On the other hand, the game is a multi-agent cooperative decentralized partially observed Markov decision process, which are in NEXP complete of problems. So, we cannot solve them in reasonable amount of time. Here, a learning algorithm which provides close to optimal solution algorithm, is provided. <p>
+				
+				<p> <em>  <b> Build the learning model  </b> </em> <p>
+				<p> An adjusted Deep Q-Network (DQN) model is used to solve to this problem. DQN is used to solve single agent games and extended to two agents zero-sum games. However, beer game is a cooperative non-zero-sum game. Using DQN directly results in a game that each agent minimizes its own cost not the whole cost of system. Thus, we cannot use it directly to solve the problem. We propose a feedback scheme to fix this issue and it enforces the agents to learn to minimize the whole cost of system. In this order we update the observed reward of each agent <i>i</i> and period <i>t</i> using:</p>
+				<img src="http://mathurl.com/y8auqxt8.png">
+				<p> in which we indeed penalize the agent with the summation of cost of other agents. Therefore, agents learn to minimize the total cost of system instead of just theirself cost. <p> 
+
+
+				<!-- alt="results"  -->
+				<p> <em> <b> What does it Learn? </b> </em>  <p>
+				<p> Here we have the result of the case that wholesaler plays DQN, and other play base stock policy. All agents have holding cost of 2 per item, per period, retailer has shortage cost of 2 per item, per period and other agents do not have shortage cost. In the following figure you see the result of no training.<p> 
+				<img src="before_training_100.jpg" alt="before training" width="680" height="382" align="middle"/> 
+				
+				<p> After 1000 of training episodes, it has hearnt that there is positive holding cost and it is better to keep its inventory level smaller. <p> 
+				<img src="1000_training_100.jpg" alt="after 1000 training episodes" width="680" height="382" align="middle"/> 
+
+				<p> After 2000 of training episodes, it has hearnt that there is no stock-out cost and it is better to keep the inventory its level negative. Also, as you see the whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
+				<img src="2000_training_100.jpg" alt="after 2000 training episodes" width="680" height="382" align="middle"/> 
+
+				<p> After 45000 of training episodes, it has hearnt almost the optimal policy, and plays in a way to not only keeps its inventory level and cost close to zero, but also plays in a way to minimize the total cost of the system. Apparently, whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
+				<img src="45000_training_100.jpg" alt="after 45000 training episodes" width="680" height="382" align="middle"/> 
+
+				<p> <em> <b> Numerical Results </b> </em> <p>
+				Here we have the cumulative cost of four agents, when one of the agents follows DQN, and other agents playing base stock. In each figure, the upper subfigure provides the total cost, and the lower subfigure provides the normalized cost, in which the both BS policy and DQN costs are divided by BS policy's cost. It is worthy to mention that, for the proposed setting of game BS policy is optimal.
+				As it you see, after few iterations all have learnt to play close to optimal solution and continue it to end. The following figure represents the results of the case that DQN plays retailer:
+				<img src="brain3_2_layer_lr000025_multPrd10_dnnUpCnt10000.png" alt="retailer follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 8% of gap compared to the case that all agents follow base stock policy. 
+				The following figure presents the results of the case that DQN plays wholesaler:
+				<img src="brain4_3_layer_lr000025_multPrd10_dnnUpCnt10000.png" alt="wholesaler follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 6% of gap compared to the case that all agents follow base stock policy. 
+				The following figure provides the results of the case that DQN plays distributor:
+				<img src="brain5_3_layer_lr000025_multPrd5_dnnUpCnt10000.png" alt="distributor follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 7% of gap compared to the case that all agents follow base stock policy. 
+				And finally, the following figure shows the results of the case that DQN plays manufacturer:
+				<img src="brain6_3_layer_lr000025_multPrd5_dnnUpCnt10000.png" alt="manufacturer follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 2% of gap compared to the case that all agents follow base stock policy. 
+
+				<!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe> -->				
+    		</div><!-- /.blurb -->
+		</div><!-- /.container -->
+		<footer>
+    		<ul>
+        		<li><a href="mailto:oroojlooy@gmail.com">email</a></li>
+        		<!-- <li><a href="https://github.com/oroojlooy">github.com/oroojlooy</a></li> -->
+        		<li><a href="https://scholar.google.com/citations?user=7nEdMAMAAAAJ&hl=en">Google Scholar</a></li>
+				<li><a href="https://www.linkedin.com/in/afshin-oroojlooy-81663b38/">LinkedIn</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>
