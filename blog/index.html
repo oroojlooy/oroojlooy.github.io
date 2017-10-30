@@ -45,7 +45,7 @@ img {
 
 
 				<!-- alt="results"  -->
-				<p> <em> <b> What does it Learn? </b> </em> 
+				<p> <em> <b> What does it Learn? </b> </em>  <p>
 				<p> Here we have the result of the case that wholesaler plays DQN, and other play base stock policy. In the following figure you see the result of no training.<p> 
 				<img src="before_training_100.jpg" alt="before training" width="680" height="382" align="middle"/> 
 				
@@ -58,7 +58,7 @@ img {
 				<p> After 45000 of training episodes, it has hearnt almost the optimal policy, and plays in a way to not only keeps its inventory level and cost close to zero, but also plays in a way to minimize the total cost of the system. Apparently, whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
 				<img src="45000_training_100.jpg" alt="after 45000 training episodes" width="680" height="382" align="middle"/> 
 
-				<p> <em> Numerical Results </em> 
+				<p> <em> <b> Numerical Results </b> </em> <p>
 				Here we have the cumulative cost of four agents, when one of the agents follows DQN, and other agents playing base stock. In each figure, the upper subfigure provides the total cost, and the lower subfigure provides the normalized cost, in which the both BS policy and DQN costs are divided by BS policy's cost. It is worthy to mention that, for the proposed setting of game BS policy is optimal.
 				As it you see, after few iterations all have learnt to play close to optimal solution and continue it to end. The following figure represents the results of the case that DQN plays retailer:
 				<img src="brain3_2_layer_lr000025_multPrd10_dnnUpCnt10000.png" alt="retailer follows DQN" width="680" height="382" align="middle"/> 
