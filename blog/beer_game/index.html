@@ -47,9 +47,9 @@ img {
 				<!-- alt="results"  -->
 				<p> <em> <b> What does it Learn? </b> </em>  <p>
 				<p> We present the results from a straightforward version of the game in which the DQN plays the role of the wholesaler and the other three players each follow a base-stock policy. (A base-stock policy means we always order to bring the inventory position&mdash;on-hand inventory minus backorders plus on-order inventory&mdash;equal to a fixed value, called the base-stock level. A base-stock policy is known to be optimal for the beer game, assuming all four players use it.) Each stage has a holding cost of $2 per item per period. The retailer has a shortage cost of $2 per item per period and the other stages do not have a shortage cost. The customer demand is either 0, 1, or 2 in each time period. (If these numbers seem small to you, think of them as cases or truckloads.) And, here is the way that the wholesaler learns:<p>
-					
-					<iframe width="420" height="315" src="https://www.youtube.com/watch?v=gQa6iWGcGWY"> </iframe>
-
+<div align="center">
+					<iframe width="800" height="600" src="https://www.youtube.com/embed/gQa6iWGcGWY" frameborder="0" gesture="media" allowfullscreen></iframe>
+</div>
 				<p>Before the algorithm is trained, the wholesaler plays pretty badly. It stocks way too much inventory, as you can see in the figure below, and causes stockouts at the upstream stages. (Positive inventory is shown as brown boxes and positive numbers. Backorders are shown as red boxes and negative numbers.) <p> 
 				<img src="before_training_100.jpg" alt="before training" width="680" height="382" align="middle"/> 
 				
