@@ -46,7 +46,7 @@ img {
 
 				<!-- alt="results"  -->
 				<p> <em> <b> What does it Learn? </b> </em>  <p>
-				<p> We present the results from a straightforward version of the game in which the DQN plays the role of the wholesaler and the other three players each follow a base-stock policy. (A base-stock policy means we always order to bring the inventory position&mdash;on-hand inventory minus backorders plus on-order inventory&mdash;equal to a fixed value, called the base-stock level. A base-stock policy is known to be optimal for the beer game, assuming all four players use it.) Each stage has a holding cost of $2 per item per period. The retailer has a shortage cost of $2 per item per period and the other stages do not have a shortage cost. The customer demand is either 0, 1, or 2 in each time period. (If these numbers seem small to you, think of them as cases or truckloads.) And, here is the way that the wholesaler learns:<p>
+				<p> We present the results from a straightforward version of the game in which the DQN plays the role of the wholesaler and the other three players each follow a base-stock policy. (A base-stock policy means we always order to bring the inventory position&mdash;on-hand inventory minus backorders plus on-order inventory&mdash;equal to a fixed value, called the base-stock level. A base-stock policy is known to be optimal for the beer game, assuming all four players use it.) Each stage has a holding cost of <i>2 per item per period. The retailer has a shortage cost of <i>2 per item per period and the other stages do not have a shortage cost. The customer demand is either 0, 1, or 2 in each time period. (If these numbers seem small to you, think of them as cases or truckloads.) And, here is the way that the wholesaler learns:<p>
 <div align="center">
 					<iframe width="800" height="600" src="https://www.youtube.com/embed/gQa6iWGcGWY" frameborder="0" gesture="media" allowfullscreen></iframe>
 </div>
@@ -76,6 +76,25 @@ img {
 				And finally, the following figure shows the results of the case that DQN plays manufacturer:
 				<img src="brain6_3_layer_lr000025_multPrd5_dnnUpCnt10000.png" alt="manufacturer follows DQN" width="680" height="536" align="middle"/> 
 				in which there is about 2% of gap compared to the case that all agents follow base stock policy. 
+
+
+				Also, shows the details of the inventory level (<i>IL</i>), on-order quantity (<i>OO</i>), order quantity (<i>a</i>), order up to level ({\tt OUTL}), and reward (<i>r</i>) for the retailer when the retailer is	played by the DQN. 
+				The BS policy and DQN have similar <i>IL</i> and <i>OO</i> trends, and as a result their rewards are also very close.
+				<img src="brain3-0-26-R.png" alt="retailer follows DQN" width="1156" height="250" align="middle"/> 
+
+
+				<p> <em> <b> Play with Irrational Players </b> </em> <p>
+				The agents who follow the BS are rational players. In order to see how well DQN works when it plays with irrational players, we tested the case that a DQN agent plays with three agents following the Sterman formula; see the following figure, which shows the corresponding results when the DQN plays the distributor. The DQN learns very well to play with other irrational players to minimize the total cost of the system, such that on average the DQN agents obtained $40\%$ smaller cost than the case in which the three Sterman players play with one BS policy. We get same results on other agents. 
+				<img src="brain9_3_layer_lr0001_multPrd5_dnnUpCnt5000.png" alt="manufacturer follows DQN" width="680" height="536" align="middle"/> 
+
+
+				<p> <em> <b> Transfer Learning </b> </em> <p>
+				This procedure works well; however, for each new set of <i>the number of actions, shortage and holding cost parameters</i> we need to train a new policy, since they uniquely define the DQN loss function, and this is a time consuming procedure. To address this issue, we train a base agent with given cost parameters and action space, then transfer the acquired knowledge to the new agents, so that the obtained policy easily can be generalized to other agents. 
+				The following table shows the results of training new agents with different cost coefficients and different action spaces.
+				As it is shown, the average gap is around 8.9\%, which shows the effectiveness of transfer learning approach. Additionally, the training times of each case are provided in the table. 
+				In order to get the base results, we did hyper-parameter tuning which resulted in total of 13,354,951 seconds training. However, following the transfer learning approach we do not need any hyper-parameter tuning, and on average we spent 891,117 seconds for training, which is 15 times faster.
+				<img src="tl_results.png" alt="manufacturer follows DQN" width="797" height="252" align="middle"/> 
+
 
 				<p> <em> <b> Conclusion </b> </em> <p>
 					These results are really incredible!!!. We can learn to play close to optimal solution, with just---and only just---some historical data. Without any knowledge how other agents play, what is their ordering policy, etc. 
