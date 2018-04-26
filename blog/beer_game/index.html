@@ -85,7 +85,7 @@ img {
 
 				<p> <em> <b> Play with Irrational Players </b> </em> <p>
 				The agents who follow the BS are rational players. In order to see how well DQN works when it plays with irrational players, we tested the case that a DQN agent plays with three agents following the Sterman formula; see the following figure, which shows the corresponding results when the DQN plays the distributor. The DQN learns very well to play with other irrational players to minimize the total cost of the system, such that on average the DQN agents obtained $40\%$ smaller cost than the case in which the three Sterman players play with one BS policy. We get same results on other agents. 
-				<img src="brain9_3_layer_lr0001_multPrd5_dnnUpCnt5000.png" alt="manufacturer follows DQN" width="680" height="536" align="middle"/> 
+				<img src="brain9_3_layer_lr0001_multPrd5_dnnUpCnt5000.png" alt="distributor follows DQN" width="680" height="536" align="middle"/> 
 
 
 				<p> <em> <b> Transfer Learning </b> </em> <p>
@@ -93,7 +93,7 @@ img {
 				The following table shows the results of training new agents with different cost coefficients and different action spaces.
 				As it is shown, the average gap is around 8.9\%, which shows the effectiveness of transfer learning approach. Additionally, the training times of each case are provided in the table. 
 				In order to get the base results, we did hyper-parameter tuning which resulted in total of 13,354,951 seconds training. However, following the transfer learning approach we do not need any hyper-parameter tuning, and on average we spent 891,117 seconds for training, which is 15 times faster.
-				<img src="tl_results.png" alt="manufacturer follows DQN" width="797" height="252" align="middle"/> 
+				<img src="tl_results.png" alt="results of transfer learning" width="797" height="252" align="middle"/> 
 
 
 				<p> <em> <b> Conclusion </b> </em> <p>
