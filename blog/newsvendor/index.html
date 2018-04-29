@@ -17,6 +17,34 @@ MathJax.Hub.Config({
 });
 </script>
 
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+        MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: false
+            },
+            TeX: {
+                TagSide: "right",
+                TagIndent: ".8em",
+                MultLineWidth: "85%",
+                equationNumbers: {
+                   autoNumber: "AMS",
+                },
+                unicode: {
+                   fonts: "STIXGeneral,'Arial Unicode MS'"
+                }
+            },
+            showProcessingMessages: false
+        });
+</script>
+
 <script type="text/javascript"
 	src="http://www.maths.nottingham.ac.uk/personal/drw/LaTeXMathML.js">
 </script>
@@ -58,7 +86,7 @@ MathJax.Hub.Config({
 				
 				<p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:					
 					<img src="http://mathurl.com/y7z7skg3.png">
-				where $d$ is the random demand, $y$ is the order quantity, $c_p$ and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem \cite{snyder2011fundamentals}. In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
+				where $d$ is the random demand, $y$ is the order quantity, [$c_p$] and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem \cite{snyder2011fundamentals}. In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
 
 				<p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
 
