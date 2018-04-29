@@ -53,11 +53,6 @@ MathJax.Hub.Config({
 </script>
 
 
-<ul>
-  <li>add <code class="highlighter-rouge">mathjax: true</code> in your post</li>
-  <li>test your website, it maybe not working on latex/mathjax</li>
-</ul>
-
 <script type="text/javascript"
 	src="http://www.maths.nottingham.ac.uk/personal/drw/LaTeXMathML.js">
 </script>
@@ -71,6 +66,16 @@ MathJax.Hub.Config({
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+<style>
+  pre .latex { border:3px solid red ; }
+</style>
+
+		<title>Blog</title>
+		<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">		
+	</head>
+	<body>
     
 <div class="search-wrapper">
     <div class="search-form">
@@ -84,17 +89,7 @@ MathJax.Hub.Config({
     <!-- /.search-form -->
 </div>
 <!-- ./search-wrapper -->
-
-
-<style>
-  pre .latex { border:3px solid red ; }
-</style>
-
-		<title>Blog</title>
-		<!-- link to main stylesheet -->
-		<link rel="stylesheet" type="text/css" href="/css/main.css">		
-	</head>
-	<body>
+		
 		<nav>
     		<ul>
         		<li><a href="/">Home</a></li>
@@ -117,12 +112,13 @@ MathJax.Hub.Config({
 				where $d$ is the random demand, $y$ is the order quantity, [$c_p$] and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
 
 				<p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned}
-\dot{x} & = \sigma(y-x) \\
-\dot{y} & = \rho x - y - xz \\
-\dot{z} & = -\beta z + xy
-\end{aligned} %]]></script>
+				
+				<script type="math/tex; mode=display">% <![CDATA[
+				\begin{aligned}
+				\dot{x} & = \sigma(y-x) \\
+				\dot{y} & = \rho x - y - xz \\
+				\dot{z} & = -\beta z + xy
+				\end{aligned} %]]></script>
 
 				<p>There are ??? main approaches for solving the multi-feature newsvendor problem with data features. 
 				First, the classical approach obtains an estimate of the demand's probability distribution and then uses the classical optimization model to obtain the order quantities. This approach is called separated estimation and optimization (SEO).
