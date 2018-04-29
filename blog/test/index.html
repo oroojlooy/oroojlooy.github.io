@@ -99,7 +99,7 @@ MathJax.Hub.Config({
 				
 				<p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:					
 					<img src="http://mathurl.com/y7z7skg3.png">
-				where $d$ is the random demand, $y$ is the order quantity, [$c_p$]  <script type="math/tex; mode=display">P(E) = {n \choose k} p^k (1-p)^{ n-k}</script> and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
+				where $d$ is the random demand, $y$ is the order quantity, $c_p$ and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
 
 				<p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
 				
@@ -136,62 +136,6 @@ MathJax.Hub.Config({
 				Thus, feeding the historical data into the corresponding DNN and running it gives the order quantities directly.
 				Two proposed loss functions are based on the newsvendor cost function and we call them DNN-$\ell_1$ and DNN-$\ell_2$, according to their structures. </p>
 
-
-				<p> An adjusted Deep Q-Network (DQN) model is used to solve to this problem. DQN is used to solve single agent games and extended to two agents zero-sum games. However, beer game is a cooperative non-zero-sum game. Using DQN directly results in a game that each agent minimizes its own cost not the whole cost of system. Thus, we cannot use it directly to solve the problem. We propose a feedback scheme to fix this issue and it enforces the agents to learn to minimize the whole cost of system. In this order we update the observed reward of each agent <i>i</i> and period <i>t</i> using:</p>
-				<img src="http://mathurl.com/y8auqxt8.png">
-				<p> in which we indeed penalize the agent with the summation of cost of other agents. Therefore, agents learn to minimize the total cost of system instead of just their own costs. <p> 
-
-
-				<!-- alt="results"  -->
-				<p> <em> <b> What does it Learn? </b> </em>  <p>
-				<p> We present the results from a straightforward version of the game in which the DQN plays the role of the wholesaler and the other three players each follow a base-stock policy. (A base-stock policy means we always order to bring the inventory position&mdash;on-hand inventory minus backorders plus on-order inventory&mdash;equal to a fixed value, called the base-stock level. A base-stock policy is known to be optimal for the beer game, assuming all four players use it.) Each stage has a holding cost of <i>2 per item per period. The retailer has a shortage cost of <i>2 per item per period and the other stages do not have a shortage cost. The customer demand is either 0, 1, or 2 in each time period. (If these numbers seem small to you, think of them as cases or truckloads.) And, here is the way that the wholesaler learns:<p>
-<div align="center">
-					<iframe width="800" height="600" src="https://www.youtube.com/embed/gQa6iWGcGWY" frameborder="0" gesture="media" allowfullscreen></iframe>
-</div>
-				<p>Before the algorithm is trained, the wholesaler plays pretty badly. It stocks way too much inventory, as you can see in the figure below, and causes stockouts at the upstream stages. (Positive inventory is shown as brown boxes and positive numbers. Backorders are shown as red boxes and negative numbers.) <p> 
-				<img src="before_training_100.jpg" alt="before training" width="680" height="382" align="middle"/> 
-				
-				<p> After 1000 of training episodes, it has learned that there is positive holding cost and it is better to keep its inventory level smaller. <p> 
-				<img src="1000_training_100.jpg" alt="after 1000 training episodes" width="680" height="382" align="middle"/> 
-
-				<p> After 2000 of training episodes, it has learned that there is no stock-out cost and it is better to keep the inventory its level negative. Also, as you see the whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
-				<img src="2000_training_100.jpg" alt="after 2000 training episodes" width="680" height="382" align="middle"/> 
-
-				<p> After 45000 of training episodes, it has learned almost the optimal policy, and plays in a way to not only keeps its inventory level and cost close to zero, but also plays in a way to minimize the total cost of the system. Apparently, whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
-				<img src="45000_training_100.jpg" alt="after 45000 training episodes" width="680" height="382" align="middle"/> 
-
-				<p> <em> <b> Numerical Results </b> </em> <p>
-				Here we have the cumulative cost of four agents, when one of the agents follows DQN, and other agents playing base stock. In each figure, the upper subfigure provides the total cost, and the lower subfigure provides the normalized cost, in which the both BS policy and DQN costs are divided by BS policy's cost. It is worthy to mention that, for the proposed setting of game BS policy is optimal.
-				As it you see, after few iterations all have learned to play close to optimal solution and continue it to end. The following figure represents the results of the case that DQN plays retailer:
-				<img src="brain3_2_layer_lr000025_multPrd10_dnnUpCnt10000.png" alt="retailer follows DQN" width="680" height="536" align="middle"/> 
-				in which there is about 8% of gap compared to the case that all agents follow base stock policy. 
-				The following figure presents the results of the case that DQN plays wholesaler:
-				<img src="brain4_3_layer_lr000025_multPrd10_dnnUpCnt10000.png" alt="wholesaler follows DQN" width="680" height="536" align="middle"/> 
-				in which there is about 6% of gap compared to the case that all agents follow base stock policy. 
-				The following figure provides the results of the case that DQN plays distributor:
-				<img src="brain5_3_layer_lr000025_multPrd5_dnnUpCnt10000.png" alt="distributor follows DQN" width="680" height="536" align="middle"/> 
-				in which there is about 7% of gap compared to the case that all agents follow base stock policy. 
-				And finally, the following figure shows the results of the case that DQN plays manufacturer:
-				<img src="brain6_3_layer_lr000025_multPrd5_dnnUpCnt10000.png" alt="manufacturer follows DQN" width="680" height="536" align="middle"/> 
-				in which there is about 2% of gap compared to the case that all agents follow base stock policy. 
-
-
-				Also, the following figure shows the details of the inventory level (<i>IL</i>), on-order quantity (<i>OO</i>), order quantity (<i>a</i>), order up to level (<i>OUTL</i>), and reward (<i>r</i>) for the retailer when the retailer is	played by the DQN. 
-				The BS policy and DQN have similar <i>IL</i> and <i>OO</i> trends, and as a result their rewards are also very close.
-				<img src="brain3-0-26-R.png" alt="the details of play when retailer follows DQN" width="1156" height="250" align="middle"/> 
-
-
-				<p> <em> <b> Play with Irrational Players </b> </em> <p>
-				The agents who follow the BS are rational players. In order to see how well DQN works when it plays with irrational players, we tested the case that a DQN agent plays with three agents following the Sterman formula; see the following figure, which shows the corresponding results when the DQN plays the distributor. The DQN learns very well to play with other irrational players to minimize the total cost of the system, such that on average the DQN agents obtained $40\%$ smaller cost than the case in which the three Sterman players play with one BS policy. We get same results on other agents. 
-				<img src="brain9_3_layer_lr0001_multPrd5_dnnUpCnt5000.png" alt="distributor follows DQN" width="680" height="536" align="middle"/> 
-
-
-				<p> <em> <b> Transfer Learning </b> </em> <p>
-				This procedure works well; however, for each new set of <i>the number of actions, shortage and holding cost parameters</i> we need to train a new policy, since they uniquely define the DQN loss function, and this is a time consuming procedure. To address this issue, we train a base agent with given cost parameters and action space, then transfer the acquired knowledge to the new agents, so that the obtained policy easily can be generalized to other agents. 
-				The following table shows the results of training new agents with different cost coefficients and different action spaces.
-				As it is shown, the average gap is around 8.9\%, which shows the effectiveness of transfer learning approach. Additionally, the training times of each case are provided in the table. 
-				In order to get the base results, we did hyper-parameter tuning which resulted in total of 13,354,951 seconds training. However, following the transfer learning approach we do not need any hyper-parameter tuning, and on average we spent 891,117 seconds for training, which is 15 times faster.
-				<img src="tl_results.png" alt="results of transfer learning" width="797" height="252" align="middle"/> 
 
 
 				<p> <em> <b> Conclusion </b> </em> <p>
