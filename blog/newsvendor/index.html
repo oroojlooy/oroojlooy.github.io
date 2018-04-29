@@ -107,14 +107,14 @@ MathJax.Hub.Config({
     		<div class="blurb">
 				<font size="+2"> <p><em>  <b> Beer Game  </b> </em> </p> </font>
 				<p> 	The newsvendor problem optimizes the inventory of a perishable good. Perishable goods are those that have a limited selling season; they include fresh produce, newspapers, airline tickets, and fashion goods. The newsvendor problem assumes that the company purchases the goods at the beginning of  a time period and sells them during the period. 
-				At the end of the period, unsold goods must be discarded, incurring a {\em holding cost}.
-				In addition, if it runs out of the goods in the middle of the period, it incurs a {\em shortage cost}, losing potential profit.
+				At the end of the period, unsold goods must be discarded, incurring a <i>holding cost</i>.
+				In addition, if it runs out of the goods in the middle of the period, it incurs a <i>shortage cost</i>, losing potential profit.
 				Therefore, the company wants to choose the order quantity that minimizes the expected sum of the two costs described above. The problem dates back to 1888. See Porteus (2008) for a history. <p>
 				<!-- alt="The agents of beer game"  -->
 				
 				<p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:					
 					<img src="http://mathurl.com/y7z7skg3.png">
-				where $d$ is the random demand, $y$ is the order quantity, [$c_p$] and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem \cite{snyder2011fundamentals}. In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
+				where $d$ is the random demand, $y$ is the order quantity, [$c_p$] and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
 
 				<p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
 <script type="math/tex; mode=display">% <![CDATA[
@@ -215,6 +215,7 @@ MathJax.Hub.Config({
 
 
 					Porteus, Evan L. "The newsvendor problem." Building Intuition. Springer, Boston, MA, 2008. 115-134.
+					Snyder, Lawrence V., and Zuo-Jun Max Shen. Fundamentals of supply chain theory. John Wiley \& Sons, 2011.
 
 				<!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe> -->				
     		</div><!-- /.blurb -->
