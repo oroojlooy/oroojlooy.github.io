@@ -1,277 +1,33 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+	<head>
+<style>
+img {
+    display: block;
+    margin: 0 auto;
+}
+</style>
 
-<head>
-    <meta charset="utf-8">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    inlineMath: [['$','$']]
+  }
+});
+</script>
 
-
-<meta name="keywords" content="mathjax, latex">
-
-
-<!-- Begin Jekyll SEO tag v2.2.0 -->
-<title>How to enable mathjax/latex in github pages | zishuai</title>
-<meta property="og:title" content="How to enable mathjax/latex in github pages" />
-<meta name="author" content="zishuai" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="tested on pc/mobile in chrome" />
-<meta property="og:description" content="tested on pc/mobile in chrome" />
-<link rel="canonical" href="https://zishuaiz.github.io/blog/how-to-enable-mathjax-in-github-pages" />
-<meta property="og:url" content="https://zishuaiz.github.io/blog/how-to-enable-mathjax-in-github-pages" />
-<meta property="og:site_name" content="zishuai" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-04-11T00:00:00-04:00" />
-<script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "How to enable mathjax/latex in github pages",
-"author": {"@type": "Person",
-"name": {"name":"zishuai","picture":"me.jpeg","email":"zisheer@gmail.com","description":"To Be a Good Man","twitter":null,"facebook":null,"github":"zishuaiz","linkedin":null,"instagram":null,"tumblr":null,"google_plus":"https://plus.google.com/u/0/100935763284399445962"}},
-"datePublished": "2017-04-11T00:00:00-04:00",
-"description": "tested on pc/mobile in chrome",
-"publisher": {"@type": "Organization",
-"name": {"name":"zishuai","picture":"me.jpeg","email":"zisheer@gmail.com","description":"To Be a Good Man","twitter":null,"facebook":null,"github":"zishuaiz","linkedin":null,"instagram":null,"tumblr":null,"google_plus":"https://plus.google.com/u/0/100935763284399445962"},
-"logo": {"@type": "ImageObject",
-"url": "https://zishuaiz.github.io/logo.png"}},
-"mainEntityOfPage": {"@type": "WebPage",
-"@id": "https://zishuaiz.github.io/blog/how-to-enable-mathjax-in-github-pages"},
-"url": "https://zishuaiz.github.io/blog/how-to-enable-mathjax-in-github-pages"}</script>
-<!-- End Jekyll SEO tag -->
-
-
-<link type="application/atom+xml" rel="alternate" href="https://zishuaiz.github.io/feed.xml" title="zishuai" />
-
-<!-- https://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--baidu-->
 <meta name="baidu-site-verification" content="Ka0XbnDHIz"/>
 <!--google-->
-<meta name="google-site-verification" content="dK7A_nLs_W9jMkp4z0Igv6lbsPMEt750es5LsGDI4b8"/>
-<!--bing-->
-<meta name="msvalidate.01" content="69400DDE30F9991C776E715491BAAB85" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous">
-
-<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css"/>
-
-<link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="/assets/css/syntax.css"/>
-
-<!--Load Mathjax-->
 
 
-<script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
-    MathJax.Hub.Config({
-        config: ["MMLorHTML.js"],
-        extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
-        jax: ["input/TeX"],
-        tex2jax: {
-            inlineMath: [['$', '$'], ["\\(", "\\)"]],
-            displayMath: [['$$', '$$'], ["\\[", "\\]"]],
-            processEscapes: false
-        },
-        TeX: {
-            TagSide: "right",
-            TagIndent: ".8em",
-            MultLineWidth: "85%",
-            equationNumbers: {
-                autoNumber: "AMS",
-            },
-            unicode: {
-                fonts: "STIXGeneral,'Arial Unicode MS'"
-            }
-        },
-        showProcessingMessages: false
-    });
-</script>
-
-
-
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="/images/favicons/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="/images/favicons/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="/images/favicons/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-      href="/images/favicons/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-      href="/images/favicons/apple-touch-icon-144x144-precomposed.png">
-
-</head>
-
-<body class="post-template" itemscope itemtype="https://schema.org/WebPage">
-
-    
-<div class="search-wrapper">
-    <div class="search-form">
-        <input type="text" id="search-input" class="search-field" placeholder="Search...">
-        <i id="search-close" class="fa fa-times-circle"></i>
-        <h4>Search results</h4>
-        <ul id="results-container" class="search-results post-list">
-        </ul>
-        <!-- /.search-results -->
-    </div>
-    <!-- /.search-form -->
-</div>
-<!-- ./search-wrapper -->
-
-
-<div id="fade"></div>
-<a id="slide" class="animated fade"></a>
-<aside id="sidebar">
-    <nav id="navigation">
-        <h2>MENU</h2>
-        <hr>
-        <ul> 
-            <li>
-                <a href="/">Home</a>  </li>
-            
-            <li>
-                <a href="/categories">Categories</a>  </li>
-            
-            <li>
-                <a href="/tags">Tags</a>  </li>
-            
-            <li><a href="/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
-        </ul>
-    </nav>
-</aside>
-
-
-<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(/images/picture-26.jpg)"
-    itemscope itemtype="https://schema.org/Organization">
-    
-
-
-
-    <button class="menu-button animated fade dosearch">
-        <i class="fa fa-search"></i>
-    </button> 
- 
-
-
-    <div class="inner">
-        <div class="container">
-            <a class="brand light" href="/" itemprop="url">
-                <img itemprop="logo" src="/images/logo.png" alt="zishuai Logo" />
-                <h1 class="blog-title light" itemprop="name">
-                    zishuai
-                </h1>
-            </a>
-
-            <h2 class="blog-description light bordered bordered-top" itemprop="description">
-                ===============================================================================
-            </h2>
-        </div>
-    </div>
-
-
-
-    <div class="decor-wrapper">
-        <svg id="header-decor" class="decor bottom" xmlns="https://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
-            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
-        </svg>
-    </div>
-
-</header>
-
-    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
-        <div class="container">
-            <div class="row">
-                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-                
-                
-                
-                
-
-                    <header class="post-header entry-header">
-
-                    
-
-                    
-                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
-                        
-                            
-                        
-                        
-                        
-
-                        
-                            How to enable mathjax/latex in github pages
-                        </h1>
-                    
-
-                        <div class="cursive" style="color: #000; font-style:italic;">tested on pc/mobile in chrome</div>
-
-                            <div class="post-info text-center small">
-                            
-                                <span class="entry-date date published updated">
-                            
-                            
-                                    <time datetime="2017-04-11T00:00:00-04:00" class="post-time" itemprop="datePublished">11 Apr 2017</time>
-                                </span>
-                            
-
-                                in <span class="post-tags">
-
-                            
-                                    <a href="/categories/index.html#Latex" data-toggle="tooltip" title="Other posts from the Latex category" rel="tag">Latex</a>
-                                
-                            
-                                </span>
-                            
-                            &nbsp;
-                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
-
-                            
-                                    1 minute read
-                            
-
-                            
-                                
-                            
-
-                                </span>
-                            
-                            </div>
-
-                    </header>
-
-                    <div class="post-body bordered-bottom" itemprop="description">
-                    
-
-                        <h1 id="1-you-should-have-a-github-pages-by-using-usernamegithubio-or-use-project-pages">1. you should have a github pages by using username.github.io or use project pages</h1>
-<h1 id="2-fork-a-jekyll-theme-that-you-like-or-just-create-from-scratch-yourself">2. Fork a jekyll theme that you like or just create from scratch yourself,</h1>
-<p>I forked from <a href="https://github.com/hmfaysal/hmfaysal-omega-theme">hmfaysal-omega-theme</a>
-This theme already enabled the mathjax/latex</p>
-<h1 id="3-if-you-create-a-new-one-by-yourself-you-should-do-this">3. If you create a new one by yourself, you should do this:</h1>
-<ul>
-  <li>in <code class="highlighter-rouge">_config.yml</code>, use <code class="highlighter-rouge">markdown: kramdown</code></li>
-  <li>in <code class="highlighter-rouge">_layouts/home.html</code> or <code class="highlighter-rouge">_includes/head.html</code> add:</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> 
-
-&lt;script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;
-&lt;script&gt;
         MathJax.Hub.Config({
             config: ["MMLorHTML.js"],
             extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
@@ -294,320 +50,166 @@ This theme already enabled the mathjax/latex</p>
             },
             showProcessingMessages: false
         });
-&lt;/script&gt;
+</script>
 
-</code></pre>
+
+<script type="text/javascript"
+	src="http://www.maths.nottingham.ac.uk/personal/drw/LaTeXMathML.js">
+</script>
+
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style>
+  pre .latex { border:3px solid red ; }
+</style>
+
+		<title>Blog</title>
+		<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">		
+	</head>
+	<body>
+
+		<nav>
+    		<ul>
+        		<li><a href="/">Home</a></li>
+	        	<li><a href="/publications">Publications</a></li>
+        		<li><a href="/cv">CV</a></li>
+        		<li><a href="/blog">Blog</a></li>
+    		</ul>
+		</nav>
+		<div class="container">
+    		<div class="blurb">
+				<font size="+2"> <p><em>  <b> Beer Game  </b> </em> </p> </font>
+				<p> 	The newsvendor problem optimizes the inventory of a perishable good. Perishable goods are those that have a limited selling season; they include fresh produce, newspapers, airline tickets, and fashion goods. The newsvendor problem assumes that the company purchases the goods at the beginning of  a time period and sells them during the period. 
+				At the end of the period, unsold goods must be discarded, incurring a <i>holding cost</i>.
+				In addition, if it runs out of the goods in the middle of the period, it incurs a <i>shortage cost</i>, losing potential profit.
+				Therefore, the company wants to choose the order quantity that minimizes the expected sum of the two costs described above. The problem dates back to 1888. See Porteus (2008) for a history. <p>
+				<!-- alt="The agents of beer game"  -->
+				
+				<p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:					
+					<img src="http://mathurl.com/y7z7skg3.png">
+				where $d$ is the random demand, $y$ is the order quantity, [$c_p$]  <script type="math/tex; mode=display">P(E) = {n \choose k} p^k (1-p)^{ n-k}</script> and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
+
+				<p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
+				
+				<script type="math/tex; mode=display">% <![CDATA[
+				\begin{aligned}
+				\dot{x} & = \sigma(y-x) \\
+				\dot{y} & = \rho x - y - xz \\
+				\dot{z} & = -\beta z + xy
+				\end{aligned} %]]></script>
+
+				<p>There are ??? main approaches for solving the multi-feature newsvendor problem with data features. 
+				First, the classical approach obtains an estimate of the demand's probability distribution and then uses the classical optimization model to obtain the order quantities. This approach is called separated estimation and optimization (SEO).
+				However, obtaining the probability distribution with any approximation procedure involves some level of errors, especially when there are insufficient historical data. 
+				In addition, sometimes there is not enough data to approximate a probability distribution. 
+				So, in each of these cases, the classical approach cannot be used.</p> 
+				
+				<p>Second, \cite{Thiele} proposes a data driven algorithm that directly optimizes the order quantities through finding Estimated Quantile (EQ).
+				However, this model fails when there is volatility among the training data. 
+				In addition, similar to the classical newsvendor algorithm, it only considers categorical features and cannot deal with continuous features, which are common in supply chain demand data.</p> 
+
+				<p>Finally, machine learning and Deep Neural Network (DNN) models have been proposed to obtain a forecast of the demand, e.g. \cite{lu2014hybrid}.
+				Most of these approaches set order quantities equal to the demand forecast. However, this ignores a core insight from the newsvendor model, namely, that order quantities should be larger (or, in rarer cases, smaller) than the demand forecast, with the actual quantity driven by the relative magnitudes of the shortage and holding costs. 
+				To address this drawback, \cite{vahn_News} proposes a Linear Machine Learning (LML) model, which considers the cost coefficients to obtain order quantities.
+				However, this model is too slow for a large number of instances, has poor quality when there are small number of observations for each combination of the features, and its learning is limited to the current training data. 
+				Therefore, there is a need for an algorithm that works with both small and large amounts of featured-historical data and solve them in a reasonable amount of time.</p> 
+
+				<p> <em>  <b> Our Approach  </b> </em> <p>
+				<p> We develop a new approach based on Deep Neural Network (DNN) to solve the multi-product newsvendor problem with data features. 
+				DNN is a branch of machine learning which aimed to build a model between inputs and outputs. 
+				In order to minimize the closeness of the obtained values and the real outputs, a loss function, e.g. hinge, euclidean, etc. measures the closeness of them.
+				The goal of DNN is providing a small loss value.
+				To adapt DNN for the newsvendor problem, we propose two loss functions, considering the impact of the shortage and holding costs. 
+				These loss functions <i>allow DNN to obtain the minimizer of the newsvendor cost function directly, rather than first estimating the demand distribution and then choosing an order quantity.</i>
+				Thus, feeding the historical data into the corresponding DNN and running it gives the order quantities directly.
+				Two proposed loss functions are based on the newsvendor cost function and we call them DNN-$\ell_1$ and DNN-$\ell_2$, according to their structures. </p>
+
+
+				<p> An adjusted Deep Q-Network (DQN) model is used to solve to this problem. DQN is used to solve single agent games and extended to two agents zero-sum games. However, beer game is a cooperative non-zero-sum game. Using DQN directly results in a game that each agent minimizes its own cost not the whole cost of system. Thus, we cannot use it directly to solve the problem. We propose a feedback scheme to fix this issue and it enforces the agents to learn to minimize the whole cost of system. In this order we update the observed reward of each agent <i>i</i> and period <i>t</i> using:</p>
+				<img src="http://mathurl.com/y8auqxt8.png">
+				<p> in which we indeed penalize the agent with the summation of cost of other agents. Therefore, agents learn to minimize the total cost of system instead of just their own costs. <p> 
+
+
+				<!-- alt="results"  -->
+				<p> <em> <b> What does it Learn? </b> </em>  <p>
+				<p> We present the results from a straightforward version of the game in which the DQN plays the role of the wholesaler and the other three players each follow a base-stock policy. (A base-stock policy means we always order to bring the inventory position&mdash;on-hand inventory minus backorders plus on-order inventory&mdash;equal to a fixed value, called the base-stock level. A base-stock policy is known to be optimal for the beer game, assuming all four players use it.) Each stage has a holding cost of <i>2 per item per period. The retailer has a shortage cost of <i>2 per item per period and the other stages do not have a shortage cost. The customer demand is either 0, 1, or 2 in each time period. (If these numbers seem small to you, think of them as cases or truckloads.) And, here is the way that the wholesaler learns:<p>
+<div align="center">
+					<iframe width="800" height="600" src="https://www.youtube.com/embed/gQa6iWGcGWY" frameborder="0" gesture="media" allowfullscreen></iframe>
 </div>
+				<p>Before the algorithm is trained, the wholesaler plays pretty badly. It stocks way too much inventory, as you can see in the figure below, and causes stockouts at the upstream stages. (Positive inventory is shown as brown boxes and positive numbers. Backorders are shown as red boxes and negative numbers.) <p> 
+				<img src="before_training_100.jpg" alt="before training" width="680" height="382" align="middle"/> 
+				
+				<p> After 1000 of training episodes, it has learned that there is positive holding cost and it is better to keep its inventory level smaller. <p> 
+				<img src="1000_training_100.jpg" alt="after 1000 training episodes" width="680" height="382" align="middle"/> 
 
-<ul>
-  <li>add <code class="highlighter-rouge">mathjax: true</code> in your post</li>
-  <li>test your website, it maybe not working on latex/mathjax</li>
-</ul>
+				<p> After 2000 of training episodes, it has learned that there is no stock-out cost and it is better to keep the inventory its level negative. Also, as you see the whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
+				<img src="2000_training_100.jpg" alt="after 2000 training episodes" width="680" height="382" align="middle"/> 
 
-<h1 id="problems-and-solutions">Problems and solutions</h1>
+				<p> After 45000 of training episodes, it has learned almost the optimal policy, and plays in a way to not only keeps its inventory level and cost close to zero, but also plays in a way to minimize the total cost of the system. Apparently, whole network is more stable and the inventory levels are closer to zero than previous screenshots.<p> 
+				<img src="45000_training_100.jpg" alt="after 45000 training episodes" width="680" height="382" align="middle"/> 
 
-<ul>
-  <li>
-    <p>I forked this theme and I see the origin theme support mathjax/latex, but it is nothing in my theme, all the source
-code are the same, but why, why my forked jekyll theme not support mathjax/latex, why my forked jekyll not showing
-like the origin.</p>
-  </li>
-  <li>
-    <p>I notice that the chrome show that <code class="highlighter-rouge">This page is trying to load scripts from unauthenticated sources</code> in top right of
-the address bar, when I click to load the script, the chrome show that this site is unsafe, and the site bar become
-red.</p>
-  </li>
-  <li>So how to enable your github pages support   <code class="highlighter-rouge">https</code>,
-just <strong>replace all the http</strong> to <strong>https</strong>.</li>
-  <li>Done</li>
-</ul>
-
-<p>See this:</p>
-
-<p><strong>The Lorenz Equations</strong></p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned}
-\dot{x} & = \sigma(y-x) \\
-\dot{y} & = \rho x - y - xz \\
-\dot{z} & = -\beta z + xy
-\end{aligned} %]]></script>
-
-<p><strong>The Cauchy-Schwarz Inequality</strong></p>
-
-<script type="math/tex; mode=display">\left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
- \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)</script>
-
-<p><strong>A Cross Product Formula</strong></p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\mathbf{V}_1 \times \mathbf{V}_2 =
-   \begin{vmatrix}
-    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-    \frac{\partial X}{\partial u} & \frac{\partial Y}{\partial u} & 0 \\
-    \frac{\partial X}{\partial v} & \frac{\partial Y}{\partial v} & 0 \\
-   \end{vmatrix} %]]></script>
-
-<p><strong>The probability of getting (k) heads when flipping (n) coins is:</strong></p>
-
-<script type="math/tex; mode=display">P(E) = {n \choose k} p^k (1-p)^{ n-k}</script>
-
-<p><strong>An Identity of Ramanujan</strong></p>
-
-<script type="math/tex; mode=display">\frac{1}{(\sqrt{\phi \sqrt{5}}-\phi) e^{\frac25 \pi}} =
-     1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
-      {1+\frac{e^{-8\pi}} {1+\ldots} } } }</script>
-
-<p><strong>A Rogers-Ramanujan Identity</strong></p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-1 +  \frac{q^2}{(1-q)}+\frac{q^6}{(1-q)(1-q^2)}+\cdots =
-    \prod_{j=0}^{\infty}\frac{1}{(1-q^{5j+2})(1-q^{5j+3})},
-     \quad\quad \text{for $|q|<1$}. %]]></script>
+				<p> <em> <b> Numerical Results </b> </em> <p>
+				Here we have the cumulative cost of four agents, when one of the agents follows DQN, and other agents playing base stock. In each figure, the upper subfigure provides the total cost, and the lower subfigure provides the normalized cost, in which the both BS policy and DQN costs are divided by BS policy's cost. It is worthy to mention that, for the proposed setting of game BS policy is optimal.
+				As it you see, after few iterations all have learned to play close to optimal solution and continue it to end. The following figure represents the results of the case that DQN plays retailer:
+				<img src="brain3_2_layer_lr000025_multPrd10_dnnUpCnt10000.png" alt="retailer follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 8% of gap compared to the case that all agents follow base stock policy. 
+				The following figure presents the results of the case that DQN plays wholesaler:
+				<img src="brain4_3_layer_lr000025_multPrd10_dnnUpCnt10000.png" alt="wholesaler follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 6% of gap compared to the case that all agents follow base stock policy. 
+				The following figure provides the results of the case that DQN plays distributor:
+				<img src="brain5_3_layer_lr000025_multPrd5_dnnUpCnt10000.png" alt="distributor follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 7% of gap compared to the case that all agents follow base stock policy. 
+				And finally, the following figure shows the results of the case that DQN plays manufacturer:
+				<img src="brain6_3_layer_lr000025_multPrd5_dnnUpCnt10000.png" alt="manufacturer follows DQN" width="680" height="536" align="middle"/> 
+				in which there is about 2% of gap compared to the case that all agents follow base stock policy. 
 
 
-                        <br>
-
-                    
-                    
-                        <div class="entry-tags text-center">
-                            <i class="fa fa-tags"></i>&nbsp;
-                                Tagged with 
-                            
-                                <a href="/tags/index.html#mathjax" data-toggle="tooltip" title="Posts tagged with mathjax" rel="tag">mathjax</a>
-
-                                
-                                &nbsp;&bull;&nbsp;
-                                
-                            
-                                <a href="/tags/index.html#latex" data-toggle="tooltip" title="Posts tagged with latex" rel="tag">latex</a>
-
-                                
-                            
-                        </div>
-                    
-                    </div>
-
-                    <footer class="post-footer entry-meta">
-                    
-                        <div class="post-share text-center">
-    <p class="light small">
-        Share this post
-    </p>
-    <ul class="social-mini">
-        <li>
-            <a href="https://twitter.com/intent/tweet?text=How+to+enable+mathjax%2Flatex+in+github+pages%20/blog/how-to-enable-mathjax-in-github-pages%20via%20&#64;"
-                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
-                title="Share on Twitter" itemprop="Twitter">
-                <i class="fa fa-twitter"></i>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=/blog/how-to-enable-mathjax-in-github-pages" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
-                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
-                <i class="fa fa-facebook"></i>
-            </a>
-        </li>
-        <li>
-            <a href="https://plus.google.com/share?url=/blog/how-to-enable-mathjax-in-github-pages" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
-                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
-                <i class="fa fa-google-plus"></i>
-            </a>
-        </li>
-    </ul>
-</div>
-                    
-
-                        <div class="post-author text-center">
-	<!--<img src="https://zishuaiz.github.io/images/me.jpeg" alt="zishuai's photo" itemprop="image" class="post-avatar img-circle img-responsive" />-->
-	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-		By <span itemprop="name" class="fn"><a href="/about" title="About zishuai" itemprop="url">zishuai</a></span>
-	</h4>
-	<p>To Be a Good Man</p>
-</div> 
-                        
-                    
-                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
-                    
-                    </footer>
-
-                </article>
-            </div>
-        </div>
-    </div>
-
-    
-    <footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(/images/picture-26.jpg)">
+				Also, the following figure shows the details of the inventory level (<i>IL</i>), on-order quantity (<i>OO</i>), order quantity (<i>a</i>), order up to level (<i>OUTL</i>), and reward (<i>r</i>) for the retailer when the retailer is	played by the DQN. 
+				The BS policy and DQN have similar <i>IL</i> and <i>OO</i> trends, and as a result their rewards are also very close.
+				<img src="brain3-0-26-R.png" alt="the details of play when retailer follows DQN" width="1156" height="250" align="middle"/> 
 
 
-    <div class="inner">
-        <div class="container">
-            <ul class="social-icons">
-                  
-                <li>
-                    <a href="https://plus.google.com/u/0/100935763284399445962" data-toggle="tooltip" title="zishuai on Google+" target="_blank">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </li>
-                     
-                <li>
-                    <a href="https://github.com/zishuaiz" data-toggle="tooltip" title="zishuai on Github" target="_blank">
-                        <i class="fa fa-github"></i>
-                    </a>
-                </li>
-                
-            </ul>
-            <div>
-                <a href="/about/">zishuai</a> &copy; 2017 &bull;
-                All rights reserved.
-            </div>
-            <ul class="menu-items">
-                
-                <li>
-                    
-                    <a href="/"><i class="fa fa-home"></i></a>&nbsp;&bull;
-                    
-                </li>
-                
-                <li>
-                    
-                    <a href="/categories">Categories</a>&nbsp;&bull;
-                    
-                </li>
-                
-                <li>
-                    
-                    <a href="/tags">Tags</a>&nbsp;&bull;
-                    
-                </li>
-                
-                <li><a href="/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
-            </ul>
-        </div>
-    </div>
-
-    
-    <div class="decor-wrapper">
-        <svg id="footer-decor" class="decor top" xmlns="https://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
-            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
-        </svg>
-    </div>
-    
-    
-</footer>
-
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-  crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="/assets/js/plugins/jekyll-search.min.js"></script>
-<script type="text/javascript" src="/assets/js/plugins/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/assets/js/plugins/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="/assets/js/plugins/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="/assets/js/main.js"></script>
-<script type="text/javascript" src="/assets/js/script.js"></script>
-<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
-
-<script type="text/javascript">
-
-/*      Slides       */
-
-$("a#slide").click(function(){
-    $("#sidebar,body,a#slide,#fade").addClass("slide")
-});
-
-$("#fade,#header,#posts-container").click(function(){
-    $("#sidebar,body,a#slide,#fade").removeClass("slide")
-});
-
-$("a#click-filter").click(function(){
-    $("#slide-filter").slideToggle("medium");
-    $("#slide-pages").slideOut("medium");
-});
-
-$("a#click-pages").click(function(){
-    $("#slide-pages").slideToggle("medium");
-    $("#slide-filter").slideOut("medium");
-});
-
-/*      End-Slides      */
-
-</script>
+				<p> <em> <b> Play with Irrational Players </b> </em> <p>
+				The agents who follow the BS are rational players. In order to see how well DQN works when it plays with irrational players, we tested the case that a DQN agent plays with three agents following the Sterman formula; see the following figure, which shows the corresponding results when the DQN plays the distributor. The DQN learns very well to play with other irrational players to minimize the total cost of the system, such that on average the DQN agents obtained $40\%$ smaller cost than the case in which the three Sterman players play with one BS policy. We get same results on other agents. 
+				<img src="brain9_3_layer_lr0001_multPrd5_dnnUpCnt5000.png" alt="distributor follows DQN" width="680" height="536" align="middle"/> 
 
 
-<!-- Jekyll Simple Search option -->
-<script>
-
-   SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        json: 'https://zishuaiz.github.io/assets/json/search.json',
-        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
-        noResultsText: '<p>Nothing found.</p>',
-        limit: 10,
-        fuzzy: false,
-        exclude: ['Welcome']
-      });
-
-  (function( $, window, undefined ) {
-    
-     var bs = {
-          close: $("#search-close"),
-          searchform: $(".search-form"),
-          canvas: $("body"),
-          dothis: $('.dosearch')
-      };
-    
-    bs.dothis.on('click', function() {
-      $('.search-wrapper').css({ display: "block" });
-      bs.searchform.toggleClass('active');
-      bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
-    });
-    
-      bs.close.on('click', function() {
-        $('.search-wrapper').removeAttr( 'style' );
-        bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
-    });
-  })( jQuery, window );
-</script>
+				<p> <em> <b> Transfer Learning </b> </em> <p>
+				This procedure works well; however, for each new set of <i>the number of actions, shortage and holding cost parameters</i> we need to train a new policy, since they uniquely define the DQN loss function, and this is a time consuming procedure. To address this issue, we train a base agent with given cost parameters and action space, then transfer the acquired knowledge to the new agents, so that the obtained policy easily can be generalized to other agents. 
+				The following table shows the results of training new agents with different cost coefficients and different action spaces.
+				As it is shown, the average gap is around 8.9\%, which shows the effectiveness of transfer learning approach. Additionally, the training times of each case are provided in the table. 
+				In order to get the base results, we did hyper-parameter tuning which resulted in total of 13,354,951 seconds training. However, following the transfer learning approach we do not need any hyper-parameter tuning, and on average we spent 891,117 seconds for training, which is 15 times faster.
+				<img src="tl_results.png" alt="results of transfer learning" width="797" height="252" align="middle"/> 
 
 
- 
+				<p> <em> <b> Conclusion </b> </em> <p>
+					These results are really incredible!!!. We can learn to play close to optimal solution, with just---and only just---some historical data. Without any knowledge how other agents play, what is their ordering policy, etc. 
+					Nowadays that any company has huge datasets, we can easily use those data and optimize their supply chain network. This approach can be easily used in different supply chain with much more complex networks, and more agents. 
+					I will post more results latter. BTW, you also can read the corresponding paper <a href="https://arxiv.org/abs/1708.05924">here </a>.!
 
 
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'shortname'; // required: replace example with your forum shortname
+					Porteus, Evan L. "The newsvendor problem." Building Intuition. Springer, Boston, MA, 2008. 115-134.
+					Snyder, Lawrence V., and Zuo-Jun Max Shen. Fundamentals of supply chain theory. John Wiley \& Sons, 2011.
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-        
-</body>
+				<!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe> -->				
+    		</div><!-- /.blurb -->
+		</div><!-- /.container -->
+		<footer>
+    		<ul>
+        		<li><a href="mailto:oroojlooy@gmail.com">email</a></li>
+        		<!-- <li><a href="https://github.com/oroojlooy">github.com/oroojlooy</a></li> -->
+        		<li><a href="https://scholar.google.com/citations?user=7nEdMAMAAAAJ&hl=en">Google Scholar</a></li>
+				<li><a href="https://www.linkedin.com/in/afshin-oroojlooy-81663b38/">LinkedIn</a></li>
+			</ul>
+		</footer>
+	</body>
 </html>
