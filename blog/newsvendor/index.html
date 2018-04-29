@@ -108,10 +108,10 @@ img {
             <!-- alt="The agents of beer game"  -->
             
             <p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:                    
-                <img src="http://mathurl.com/y7z7skg3.png">
-            where $d$ is the random demand, $y$ is the order quantity, $c_p$ and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
+               <script type="math/tex; mode=display"> \min \limits_{y} C(y) = E_d \left[ c_p (d - y)^{+} + c_h (y - d)^{+} \right] </script>
+            where \(d\) is the random demand, \(y\) is the order quantity, \(c_p\) and \(c_h\) are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
 
-            <p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
+            <p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the <i>n</i> items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
             
             <p>There are ??? main approaches for solving the multi-feature newsvendor problem with data features. 
             First, the classical approach obtains an estimate of the demand's probability distribution and then uses the classical optimization model to obtain the order quantities. This approach is called separated estimation and optimization (SEO).
