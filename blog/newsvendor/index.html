@@ -113,107 +113,21 @@
 <body class="post-template" itemscope itemtype="https://schema.org/WebPage">
 
 
-<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(/images/picture-26.jpg)"
-    itemscope itemtype="https://schema.org/Organization">
-    
-
-
-
-    <button class="menu-button animated fade dosearch">
-        <i class="fa fa-search"></i>
-    </button> 
- 
-
-
-    <div class="inner">
-        <div class="container">
-            <a class="brand light" href="/" itemprop="url">
-                <img itemprop="logo" src="/images/logo.png" alt="zishuai Logo" />
-                <h1 class="blog-title light" itemprop="name">
-                    zishuai
-                </h1>
-            </a>
-
-            <h2 class="blog-description light bordered bordered-top" itemprop="description">
-                ===============================================================================
-            </h2>
-        </div>
-    </div>
-
-
-
-    <div class="decor-wrapper">
-        <svg id="header-decor" class="decor bottom" xmlns="https://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
-            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
-        </svg>
-    </div>
-
-</header>
-
     <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Blog">
         <div class="container">
             <div class="row">
                 <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-                
-                
-                
-                
+                              
 
                     <header class="post-header entry-header">
-
-                    
-
-                    
-                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
-                        
-                            
-                        
-                        
-                        
-
-                        
-                            How to enable mathjax/latex in github pages
-                        </h1>
-                    
 
                         <div class="cursive" style="color: #000; font-style:italic;">tested on pc/mobile in chrome</div>
 
                             <div class="post-info text-center small">
-                            
-                                <span class="entry-date date published updated">
-                            
-                            
-                                    <time datetime="2017-04-11T00:00:00-04:00" class="post-time" itemprop="datePublished">11 Apr 2017</time>
-                                </span>
-                            
-
-                                in <span class="post-tags">
-
-                            
-                                    <a href="/categories/index.html#Latex" data-toggle="tooltip" title="Other posts from the Latex category" rel="tag">Latex</a>
-                                
-                            
-                                </span>
-                            
+           
+ 
                             &nbsp;
-                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
 
-                            
-                                    1 minute read
-                            
-
-                            
-                                
-                            
-
-                                </span>
                             
                             </div>
 
@@ -231,37 +145,6 @@ This theme already enabled the mathjax/latex</p>
   <li>in <code class="highlighter-rouge">_config.yml</code>, use <code class="highlighter-rouge">markdown: kramdown</code></li>
   <li>in <code class="highlighter-rouge">_layouts/home.html</code> or <code class="highlighter-rouge">_includes/head.html</code> add:</li>
 </ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code> 
-
-&lt;script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;
-&lt;script&gt;
-        MathJax.Hub.Config({
-            config: ["MMLorHTML.js"],
-            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
-            jax: ["input/TeX"],
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                processEscapes: false
-            },
-            TeX: {
-                TagSide: "right",
-                TagIndent: ".8em",
-                MultLineWidth: "85%",
-                equationNumbers: {
-                   autoNumber: "AMS",
-                },
-                unicode: {
-                   fonts: "STIXGeneral,'Arial Unicode MS'"
-                }
-            },
-            showProcessingMessages: false
-        });
-&lt;/script&gt;
-
-</code></pre>
-</div>
 
 <ul>
   <li>add <code class="highlighter-rouge">mathjax: true</code> in your post</li>
@@ -401,71 +284,6 @@ just <strong>replace all the http</strong> to <strong>https</strong>.</li>
     </div>
 
     
-    <footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(/images/picture-26.jpg)">
-
-
-    <div class="inner">
-        <div class="container">
-            <ul class="social-icons">
-                  
-                <li>
-                    <a href="https://plus.google.com/u/0/100935763284399445962" data-toggle="tooltip" title="zishuai on Google+" target="_blank">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </li>
-                     
-                <li>
-                    <a href="https://github.com/zishuaiz" data-toggle="tooltip" title="zishuai on Github" target="_blank">
-                        <i class="fa fa-github"></i>
-                    </a>
-                </li>
-                
-            </ul>
-            <div>
-                <a href="/about/">zishuai</a> &copy; 2017 &bull;
-                All rights reserved.
-            </div>
-            <ul class="menu-items">
-                
-                <li>
-                    
-                    <a href="/"><i class="fa fa-home"></i></a>&nbsp;&bull;
-                    
-                </li>
-                
-                <li>
-                    
-                    <a href="/categories">Categories</a>&nbsp;&bull;
-                    
-                </li>
-                
-                <li>
-                    
-                    <a href="/tags">Tags</a>&nbsp;&bull;
-                    
-                </li>
-                
-                <li><a href="/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
-            </ul>
-        </div>
-    </div>
-
-    
-    <div class="decor-wrapper">
-        <svg id="footer-decor" class="decor top" xmlns="https://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
-            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
-        </svg>
-    </div>
-    
-    
-</footer>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
   crossorigin="anonymous"></script>
