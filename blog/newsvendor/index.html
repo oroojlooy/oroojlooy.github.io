@@ -9,8 +9,10 @@ img {
 </style>
 
 <script type="text/javascript"
-src="http://www.maths.nottingham.ac.uk/personal/drw/LaTeXMathML.js">
+	src="http://www.maths.nottingham.ac.uk/personal/drw/LaTeXMathML.js">
 </script>
+
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
@@ -18,6 +20,10 @@ src="http://www.maths.nottingham.ac.uk/personal/drw/LaTeXMathML.js">
 <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<style>
+  pre .latex { border:3px solid red ; }
+</style>
 
 		<title>Blog</title>
 		<!-- link to main stylesheet -->
@@ -41,15 +47,40 @@ src="http://www.maths.nottingham.ac.uk/personal/drw/LaTeXMathML.js">
 				Therefore, the company wants to choose the order quantity that minimizes the expected sum of the two costs described above. The problem dates back to 1888. See ???? \cite{Porteus08} for a history. <p>
 				<!-- alt="The agents of beer game"  -->
 				
-				<p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:
-					\$ \min \limits_{y} C(y) = E_d \left[ c_p (d - y)^{+} + c_h (y - d)^{+} \right] \$
+				<p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:					
+					<img src="http://mathurl.com/y7z7skg3.png">
+				where $d$ is the random demand, $y$ is the order quantity, $c_p$ and $c_h$ are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem \cite{snyder2011fundamentals}. In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
+
+				<p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
 
 
-				 <p>
-				<p> There are deterministic transportation and information lead times, though the total lead time is stochastic due to stockouts in upstream nodes. Each agent may have nonzero shortage and holding costs. When the game starts agents does not know when the game will finish and in each period they just select an order quantity and submit to their predecessor (supplier). The aim is minimizing long-run cost of the network given the assumption that each agent access only its own local information. <p>
-				<p> On the other hand, the game is a multi-agent cooperative decentralized partially observed Markov decision process, which are in NEXP complete of problems. So, we cannot solve them in reasonable amount of time. Here, a learning algorithm which provides close to optimal solution algorithm, is provided. <p>
+				<p>There are ??? main approaches for solving the multi-feature newsvendor problem with data features. 
+				First, the classical approach obtains an estimate of the demand's probability distribution and then uses the classical optimization model to obtain the order quantities. This approach is called separated estimation and optimization (SEO).
+				However, obtaining the probability distribution with any approximation procedure involves some level of errors, especially when there are insufficient historical data. 
+				In addition, sometimes there is not enough data to approximate a probability distribution. 
+				So, in each of these cases, the classical approach cannot be used.</p> 
 				
-				<p> <em>  <b> Build the learning model  </b> </em> <p>
+				<p>Second, \cite{Thiele} proposes a data driven algorithm that directly optimizes the order quantities through finding Estimated Quantile (EQ).
+				However, this model fails when there is volatility among the training data. 
+				In addition, similar to the classical newsvendor algorithm, it only considers categorical features and cannot deal with continuous features, which are common in supply chain demand data.</p> 
+
+				<p>Finally, machine learning and Deep Neural Network (DNN) models have been proposed to obtain a forecast of the demand, e.g. \cite{lu2014hybrid}.
+				Most of these approaches set order quantities equal to the demand forecast. However, this ignores a core insight from the newsvendor model, namely, that order quantities should be larger (or, in rarer cases, smaller) than the demand forecast, with the actual quantity driven by the relative magnitudes of the shortage and holding costs. 
+				To address this drawback, \cite{vahn_News} proposes a Linear Machine Learning (LML) model, which considers the cost coefficients to obtain order quantities.
+				However, this model is too slow for a large number of instances, has poor quality when there are small number of observations for each combination of the features, and its learning is limited to the current training data. 
+				Therefore, there is a need for an algorithm that works with both small and large amounts of featured-historical data and solve them in a reasonable amount of time.</p> 
+
+				<p> <em>  <b> Our Approach  </b> </em> <p>
+				<p> We develop a new approach based on Deep Neural Network (DNN) to solve the multi-product newsvendor problem with data features. 
+				DNN is a branch of machine learning which aimed to build a model between inputs and outputs. 
+				In order to minimize the closeness of the obtained values and the real outputs, a loss function, e.g. hinge, euclidean, etc. measures the closeness of them.
+				The goal of DNN is providing a small loss value.
+				To adapt DNN for the newsvendor problem, we propose two loss functions, considering the impact of the shortage and holding costs. 
+				These loss functions <i>allow DNN to obtain the minimizer of the newsvendor cost function directly, rather than first estimating the demand distribution and then choosing an order quantity.</i>
+				Thus, feeding the historical data into the corresponding DNN and running it gives the order quantities directly.
+				Two proposed loss functions are based on the newsvendor cost function and we call them DNN-$\ell_1$ and DNN-$\ell_2$, according to their structures. </p>
+
+
 				<p> An adjusted Deep Q-Network (DQN) model is used to solve to this problem. DQN is used to solve single agent games and extended to two agents zero-sum games. However, beer game is a cooperative non-zero-sum game. Using DQN directly results in a game that each agent minimizes its own cost not the whole cost of system. Thus, we cannot use it directly to solve the problem. We propose a feedback scheme to fix this issue and it enforces the agents to learn to minimize the whole cost of system. In this order we update the observed reward of each agent <i>i</i> and period <i>t</i> using:</p>
 				<img src="http://mathurl.com/y8auqxt8.png">
 				<p> in which we indeed penalize the agent with the summation of cost of other agents. Therefore, agents learn to minimize the total cost of system instead of just their own costs. <p> 
