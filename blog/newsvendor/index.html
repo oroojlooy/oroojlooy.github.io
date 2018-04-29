@@ -113,20 +113,26 @@ img {
 
             <p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the <i>n</i> items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
             
-            <p>There are ??? main approaches for solving the multi-feature newsvendor problem with data features. 
+            <p>There are four main approaches for solving the multi-feature newsvendor problem with data features. 
             First, the classical approach obtains an estimate of the demand's probability distribution and then uses the classical optimization model to obtain the order quantities. This approach is called separated estimation and optimization (SEO).
             However, obtaining the probability distribution with any approximation procedure involves some level of errors, especially when there are insufficient historical data. 
             In addition, sometimes there is not enough data to approximate a probability distribution. 
             So, in each of these cases, the classical approach cannot be used.</p> 
             
-            <p>Second, \cite{Thiele} proposes a data driven algorithm that directly optimizes the order quantities through finding Estimated Quantile (EQ).
+            <p>Second, Bertsimas & Thiele (2005) proposes a data driven algorithm that directly optimizes the order quantities through finding Estimated Quantile (EQ).
             However, this model fails when there is volatility among the training data. 
             In addition, similar to the classical newsvendor algorithm, it only considers categorical features and cannot deal with continuous features, which are common in supply chain demand data.</p> 
 
-            <p>Finally, machine learning and Deep Neural Network (DNN) models have been proposed to obtain a forecast of the demand, e.g. \cite{lu2014hybrid}.
+            <p>
+                Third, an approach for solving multi-feature newsvendor problem can be derived from the machine learning-based algorithms proposed by Bertsimas & Kallus (2014) to solve general optimization problem:
+                <script type="math/tex; mode=display"> z^\ast(x)  = \argmin F_{z} \mathbb{E} \left[ c(z,y) | x \right], \label{eq:bertsimas_obj} </script>
+                in which \(\left\{(x^1, y^1), \dots, (x^N, y^N)\right\}\) are the historical data such that \(x^i\) is a \(d\)-dimensional feature vector and \(y^i\) is the target value, e.g., demand, and \(z\) is the decision variable. They propose using several machine learning algorithms to optimize the mentioned problem. We chosen the best of them, namely: k-nearest neighbor (KNN), kernel method, and random forest (RF). Also, a sample average approximation (SAA) algorithm is used for the baseline, and the substitute weights for the SAA method of each algorithm is derived by those algorithms. 
+            </p>
+
+            <p>Fourth, machine learning and Deep Neural Network (DNN) models have been proposed to obtain a forecast of the demand, e.g. Lu & Chang (2014).
             Most of these approaches set order quantities equal to the demand forecast. However, this ignores a core insight from the newsvendor model, namely, that order quantities should be larger (or, in rarer cases, smaller) than the demand forecast, with the actual quantity driven by the relative magnitudes of the shortage and holding costs. 
-            To address this drawback, \cite{vahn_News} proposes a Linear Machine Learning (LML) model, which considers the cost coefficients to obtain order quantities.
-            However, this model is too slow for a large number of instances, has poor quality when there are small number of observations for each combination of the features, and its learning is limited to the current training data. 
+            To address this drawback, Ban & Rudin (2017) proposes a Linear Machine Learning (LML) model, which considers the cost coefficients to obtain order quantities.
+            However, this model is slow for a large number of instances, has poor quality when there are small number of observations for each combination of the features, and its learning is limited to the current training data. 
             Therefore, there is a need for an algorithm that works with both small and large amounts of featured-historical data and solve them in a reasonable amount of time.</p> 
 
             <p> <em>  <b> Our Approach  </b> </em> <p>
@@ -137,9 +143,22 @@ img {
             To adapt DNN for the newsvendor problem, we propose two loss functions, considering the impact of the shortage and holding costs. 
             These loss functions <i>allow DNN to obtain the minimizer of the newsvendor cost function directly, rather than first estimating the demand distribution and then choosing an order quantity.</i>
             Thus, feeding the historical data into the corresponding DNN and running it gives the order quantities directly.
-            Two proposed loss functions are based on the newsvendor cost function and we call them DNN-$\ell_1$ and DNN-$\ell_2$, according to their structures. </p>
+            Two proposed loss functions are based on the newsvendor cost function and we call them DNN-\(\ell_1\) and DNN-\(\ell_2\), according to their structures. </p>
 
 
+            <p> <em>  <b> Numerical Experiments </b> </em> </p>
+            In order to check the efficiency and validity of our algorithm, in addition to implementing our DNN's (DNN-\(\ell_1\) and DNN-\(\ell_2\)), EQ, LML, SEO, KNN, RF, and KR algorithms are implemented, order quantities was obtained with each algorithm and the corresponding newsvendor cost functions were compared. 
+            All eight algorithms are tested on a real-world and multiple simulated datasets.
+            The real-world dataset is a retailer's basket dataset, including 13K records for the demand of 24 different departments in each day and month, of which 75% is considered for training and 25% for testing. 
+            The results of each algorithm for 100 values of \(c_p\) and \(c_h\) are shown in the following figure, in which the vertical axis shows normalized costs, i.e., the cost value of each algorithm divided by the corresponding DNN-\(\ell_1\) cost. 
+            The horizontal axis shows the ratio \(c_p/c_h\) for each instance.
+            <!-- 2903*1281 -->
+            <img src="nw_original_loss_function_based_result_B0_small.jpg" alt="before training" width="1161" height="512" align="middle"/> 
+            
+
+            <p> Moreover, in order to determine the conditions under which DNN outperforms the other algorithms on larger/smaller instances, several datasets were generated randomly and the results of the four algorithms were compared.            
+            We found that in the presence of sufficient historical data, our approach can solve problems with known probability distributions as accurately as SEO and EQ solve them. 
+            However, the real value of our approach is that it is effective for problems with small quantities of historical data, problems with unknown/unfitted probability distributions, or problems with volatile historical data---all cases for which the current approaches fail. </p>
 
             <p> <em> <b> Conclusion </b> </em> <p>
                 These results are really incredible!!!. We can learn to play close to optimal solution, with just---and only just---some historical data. Without any knowledge how other agents play, what is their ordering policy, etc. 
@@ -147,14 +166,31 @@ img {
                 I will post more results latter. BTW, you also can read the corresponding paper <a href="https://arxiv.org/abs/1708.05924">here </a>.!
 
 
-                Porteus, Evan L. "The newsvendor problem." Building Intuition. Springer, Boston, MA, 2008. 115-134.
-                Snyder, Lawrence V., and Zuo-Jun Max Shen. Fundamentals of supply chain theory. John Wiley \& Sons, 2011.
-
             <!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe> -->                
         </div><!-- /.blurb -->
     </div><!-- /.container -->
 
-    <p><strong>The Lorenz Equations</strong></p>
+
+    <p>Porteus, Evan L. "The newsvendor problem." Building Intuition. Springer, Boston, MA, 2008. 115-134.</p>
+    <p>Snyder, Lawrence V., and Zuo-Jun Max Shen. Fundamentals of supply chain theory. John Wiley & Sons, 2011.</p>
+    <p>Bertsimas, Dimitris, and Aurélie Thiele. "A data-driven approach to newsvendor problems." Working Paper, Massachusetts Institute of Technology (2005).</p>
+    <p>Ban, Gah‐Yi, and Cynthia Rudin. "The big data newsvendor: Practical insights from machine learning." (2017).</p>
+    <p>Bertsimas, Dimitris, and Nathan Kallus. "From predictive to prescriptive analytics." arXiv preprint arXiv:1402.5481 (2014).</p>
+    <p>Lu, Chi-Jie, and Chi-Chang Chang. "A hybrid sales forecasting scheme by combining independent component analysis with K-means clustering and support vector regression." The Scientific World Journal 2014 (2014).</p>
+
+
+    <footer>
+        <ul>
+            <li><a href="mailto:oroojlooy@gmail.com">email</a></li>
+            <!-- <li><a href="https://github.com/oroojlooy">github.com/oroojlooy</a></li> -->
+            <li><a href="https://scholar.google.com/citations?user=7nEdMAMAAAAJ&hl=en">Google Scholar</a></li>
+            <li><a href="https://www.linkedin.com/in/afshin-oroojlooy-81663b38/">LinkedIn</a></li>
+        </ul>
+    </footer>        
+</body>
+</html>
+
+<!--     <p><strong>The Lorenz Equations</strong></p>
 
     <script type="math/tex; mode=display">% <![CDATA[
     \begin{aligned}
@@ -194,16 +230,4 @@ img {
     1 +  \frac{q^2}{(1-q)}+\frac{q^6}{(1-q)(1-q^2)}+\cdots =
         \prod_{j=0}^{\infty}\frac{1}{(1-q^{5j+2})(1-q^{5j+3})},
          \quad\quad \text{for $|q|<1$}. %]]></script>
-        
-
-
-    <footer>
-        <ul>
-            <li><a href="mailto:oroojlooy@gmail.com">email</a></li>
-            <!-- <li><a href="https://github.com/oroojlooy">github.com/oroojlooy</a></li> -->
-            <li><a href="https://scholar.google.com/citations?user=7nEdMAMAAAAJ&hl=en">Google Scholar</a></li>
-            <li><a href="https://www.linkedin.com/in/afshin-oroojlooy-81663b38/">LinkedIn</a></li>
-        </ul>
-    </footer>        
-</body>
-</html>
+         -->
