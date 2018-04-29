@@ -53,8 +53,8 @@ MathJax.Hub.Config({
 		</nav>
 		<div class="container">
     		<div class="blurb">
-				<font size="+2"> <p><em>  <b> Beer Game  </b> </em> </p> </font>
-				<p> 	The newsvendor problem optimizes the inventory of a perishable good. Perishable goods are those that have a limited selling season; they include fresh produce, newspapers, airline tickets, and fashion goods. The newsvendor problem assumes that the company purchases the goods at the beginning of  a time period and sells them during the period. 
+				<font size="+2"> <p><em>  <b> Newsvendor Problem  </b> </em> </p> </font>
+				<p> The newsvendor problem optimizes the inventory of a perishable good. Perishable goods are those that have a limited selling season; they include fresh produce, newspapers, airline tickets, and fashion goods. The newsvendor problem assumes that the company purchases the goods at the beginning of  a time period and sells them during the period. 
 				At the end of the period, unsold goods must be discarded, incurring a <i>holding cost</i>.
 				In addition, if it runs out of the goods in the middle of the period, it incurs a <i>shortage cost</i>, losing potential profit.
 				Therefore, the company wants to choose the order quantity that minimizes the expected sum of the two costs described above. The problem dates back to 1888. See Porteus (2008) for a history. <p>
@@ -66,13 +66,6 @@ MathJax.Hub.Config({
 
 				<p>There are numerous extensions of this problem (see ???). One of the extension is <i> multi-dimensional features newsvendor problem</i>, in which the demand from each of the $n$ items comes with some additional information, e.g. weather conditions, day of the week, store location, etc.</p> 
 				
-				<script type="math/tex; mode=display">% <![CDATA[
-				\begin{aligned}
-				\dot{x} & = \sigma(y-x) \\
-				\dot{y} & = \rho x - y - xz \\
-				\dot{z} & = -\beta z + xy
-				\end{aligned} %]]></script>
-
 				<p>There are ??? main approaches for solving the multi-feature newsvendor problem with data features. 
 				First, the classical approach obtains an estimate of the demand's probability distribution and then uses the classical optimization model to obtain the order quantities. This approach is called separated estimation and optimization (SEO).
 				However, obtaining the probability distribution with any approximation procedure involves some level of errors, especially when there are insufficient historical data. 
