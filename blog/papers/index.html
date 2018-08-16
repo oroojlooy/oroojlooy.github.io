@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<style>
+img {
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<meta charset="utf-8">
+
+
+<meta name="newsvendor" content="Deep Learning for Newsvendor Problem">
+
+
+<!-- Begin Jekyll SEO tag v2.2.0 -->
+<title>Deep Learning for Newsvendor Problem | Afshin</title>
+<meta property="og:title" content="Deep Learning for Newsvendor Problem" />
+<meta name="author" content="Afshin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="tested on pc/mobile in chrome" />
+<meta property="og:description" content="tested on pc/mobile in chrome" />
+<link rel="canonical" href="https://oroojlooy.github.io/blog/newsvendor" />
+<meta property="og:url" content="https://oroojlooy.github.io/blog/newsvendor" />
+<meta property="og:site_name" content="Afshin" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-11T00:00:00-04:00" />
+
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- <meta name="baidu-site-verification" content="Ka0XbnDHIz"/>
+<meta name="google-site-verification" content="dK7A_nLs_W9jMkp4z0Igv6lbsPMEt750es5LsGDI4b8"/>
+<meta name="msvalidate.01" content="69400DDE30F9991C776E715491BAAB85" /> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+ -->
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "How to enable mathjax/newsvendor in github pages",
+"author": {"@type": "Person",
+"name": {"name":"Afshin","picture":"me.jpeg","email":"oroojlooy@gmail.com","description":"To Be a Good Man","twitter":null,"facebook":null,"github":"zishuaiz","linkedin":null,"instagram":null,"tumblr":null}},
+"datePublished": "2017-04-11T00:00:00-04:00",
+"description": "tested on pc/mobile in chrome",
+"publisher": {"@type": "Organization",
+"name": {"name":"Afshin","picture":"me.jpeg","email":"oroojlooy@gmail.com","description":"To Be a Good Man","twitter":null,"facebook":null,"github":"zishuaiz","linkedin":null,"instagram":null,"tumblr":null},
+"logo": {"@type": "ImageObject",
+"url": "https://oroojlooy.github.io/logo.png"}},
+"mainEntityOfPage": {"@type": "WebPage",
+"@id": "https://oroojlooy.github.io/blog/newsvendor"},
+"url": "https://oroojlooy.github.io/blog/newsvendor"}</script>
+<!--Load Mathjax-->
+
+
+<script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        config: ["MMLorHTML.js"],
+        extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+        jax: ["input/TeX"],
+        tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]],
+            displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+            processEscapes: false
+        },
+        TeX: {
+            TagSide: "right",
+            TagIndent: ".8em",
+            MultLineWidth: "85%",
+            equationNumbers: {
+                autoNumber: "AMS",
+            },
+            unicode: {
+                fonts: "STIXGeneral,'Arial Unicode MS'"
+            }
+        },
+        showProcessingMessages: false
+    });
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css"> 
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/publications">Publications</a></li>
+            <li><a href="/cv">CV</a></li>
+            <li><a href="/blog">Blog</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="blurb">
+            <font size="+2"> <p><em>  <b> Newsvendor Problem  </b> </em> </p> </font>
+            <p> Multi-Task RL is having a RL that can learn to perform different tasks, e.g. a RL that can play all Atari games, not having 49 different networks for each game. 
+            The most naive idea is having random exploration to learn diversely. Another idea is having component models, i.e. some models that can learn a given task. For example, in the context of robotics, understanding the object, moving the object, etc. can be a component task. This field is closely related to transfer learning, which a DNN learns some general context and one can use it to transfer some knowledge. Also, zero-shot and k-shot learning, and meta-learning are in this context. See this course lecture by Sergey Levine:
+            http://rll.berkeley.edu/deeprlcourse/f17docs/lecture_15_multi_task_learning.pdf <p>
+            <!-- alt="The agents of beer game"  -->
+
+
+            <p> Fuji, Taiki, et al (2018): "each agent (the agent is the contoller) can observe a connected entity’s (R,W,D,M) information (stocks, backorders, incoming deliveries, outgoing deliveries, incoming orders, and outgoing orders). 
+            The holding cost is 0.5 and stockout cost is 1. Order delays and delivery delays are set as two weeks, and production delay of Factory is set as three weeks.
+            They introduce an M-agent that switches on/off the learning of each entity agent and repeats the learning for selecting a well evaluated story." In the training phase they have fixed D and M and just train R and W. 
+
+            "They design a simple policy function for each agent to maintain an arbitrary amount of stock shown in an action function." They formula has two variables that the DDPG model should learn them, and the output of the formula is the order quantity. 
+
+            "Each E-agent connects to one entity but cannot communicate with other E-agents. There is no direct communication between E-agents. Instead, each E-agent is weakly controlled by the M-agent while communicating abstract data, which are the E-agent’s total costs and DNNweights."
+
+            "The customer order policy and the delays between entities were fixed. In the real system, these values usually change from moment to moment. Third, in the experiments, the number of turns was fixed as 50. Thus, if the number of sequential turn data as input data for the DNN was fixed, each Eagent was able to learn the order policy. However, if the number of turns increases, the size of input data should be increased."
+
+            There are two cases in their model. One is a single-agent trainig model. The latter is four-agent which uses on-off trainnig model and trains just one agent at a time. They also share the trained networks between agents. Note that since the cost parameters of agents are equal, they can do this.</p> 
+
+            <p> The optimal order quantity for the newsvendor problem can be obtained by solving the following optimization problem:                    
+               <script type="math/tex; mode=display"> \min \limits_{y} C(y) = E_d \left[ c_p (d - y)^{+} + c_h (y - d)^{+} \right] </script>
+            where \(d\) is the random demand, \(y\) is the order quantity, \(c_p\) and \(c_h\) are the per-unit shortage and holding costs (respectively). In the presence of the demand distribution, the optimal order quantity can be obtained by solving the optimization problem (Snyder and Shen 2018). In the classical version of the problem, the demand distribution (e.g., normal) and its parameters are either known or estimated using available data. </p> 
+
+           <p> Omidshafiei et al. (2017) consider cooperative game, independent learners with partially observable, with a joint reward such that there is a single reward that all agents observe it. They propose a model free algorithm and claim that it can be more memory and computation efficient than having a model-based algorithm. The paper considers independent learners, i.e. each agent just knows its own action. 
+            Among the current approach, IQL sometimes works well in practice. It consider a Q-learning for each agent, while each one has a local observation. Distributed Q-learning (Lauer et al. 2000) updates the Q-values only when there is a guaranteed improvement and so it does not perform greedily, and there is not too much good results of that in problems with high dimension. 
+            They propose HDRQN algorithm. It is based on DRQN algorithm (Hausknecht et al. 2015) and Hysteretic Q-learning (Matignon et al. 2007). DRQN is a DQN algorithm which uses a LSTM instead of a feed forward network which is applied to partially observable environment. They tested the quality of their algorithm in atari games with a flickering screen. In Hysteretic Q-learning assumes that the low return might be the result of stochasticity in the environment so that it does not ignore them as Distributed Q-Learning does. When the TD-error is positive, it updates Q-values by the learning rate $\alpha$, and otherwise it updates it by learning rate $\beta < \alpha$. So, the model is also robust to the negative learning due to the team-mate explorations. 
+
+            In the proposed model, they assume that each agent access a local observation. In the multi-task version of their paper, there are different tasks that each has its own transition probability, observation and reward function. In the training each agent observes the task ID, while it is not accessible in the inference time. The goal of the multi-task model is minimizing the average inference reward over all episodes and periods. Algorithms like Distributed Q-learning which completely ignores the samples with low reward, assume the low returns are the result of a bad exploration of teammates. They consider an experience replay which holds the experiences of agents in any period of one episode together and when get the mini-batch of them also it obtains the experiences of a one period of all agents together. Since they use LSTM, they zero-pad the experiences in the experiences replay. The model also has a target network which is similarly used and updated as DQN. 
+            To evaluate, they run the algorithm in two players game, which agents are rewarded only when all agents simultaneously capture the moving target. In order to make the game partially observable, they use same flickering method with 30\% chance. The actions of agents is moving north, south, west, east, or waiting. Additionally, actions are noisy, i.e. the agent might act another way than what we wanted with 10\% probability. </p>
+            
+            
+            <p> Crone and Kourentzes (2010) propose using filter and wrapper approaches to improve the NN results. In this way they use time series techniques to identify the time series patterns and then transform the existing feature or create new ones to help NN provide better forecast. They specifically do:
+            1- feature filtering: use ACF, PACF to recognize the correlation between features and the output, using stepwise regression to identify the significant AR-lags, using spectral analysis. 
+            2- feature wrapper: use constructing new features for seasonal patterns, using techniques like deduction, adding variables for different seasons, etc. to overcome seasonal data.
+            </p>
+
+
+            <p> Reinforcement Learning Based Real-Time Control Policy for Two-Machine-One-Buffer Production System
+            Authors: Wei Zheng, Wei Lei (ylei@zju.edu.cn), Qing Chang (Qing.Chang@stonybrook.edu)
+
+            Gantry Scheduling for Two-Machine One-Buffer Composite Work Cell by Reinforcement Learning
+            Authors: Jorge Arinez (jorge.arinez@gm.com), Yong Lei (ylei@zju.edu.cn), Qing Chang (Qing.Chang@stonybrook.edu) 
+
+            Gantry Work Cell Scheduling through Reinforcement Learning with Knowledge-guided Reward Setting 
+            XINYAN OU, JORGE ARINEZ (jorge.arinez@gm.com), JING ZOU, Qing Chang (qing.chang@stonybrook.edu)
+
+            Reinforcement learning approaches for specifying ordering policies of perishable inventory systems
+            Ahmet Kara (ahmet.kara@erciyes.edu.tr), Ibrahim Dogan (idogan@erciyes.edu.tr) 
+            
+            Optimal control of HVAC and window systems for natural ventilation through reinforcement learning 
+            An Agent-Based Model of Regional Food Supply Chain Disintermediation
+            A New Reinforcement Learning Algorithm With Fixed Exploration for Semi-Markov Control in Preventive Maintenance 
+            A Deep Reinforcement Learning Approach For Dual Sourcing Inventory Management, Joren Gijsbrechts, Robert Boute, Dennis Zhang, Jan Van Mieghem
+            Operationalizing Clinical Trial Enrollment Solution With Discrete Event Simulation And Reinforcement Learning, Bahar Biller, Ivan Oliveira, Manoj K. Chari, Anup C. Mokashi, Anatoli Melechko, Mustafa Onur Kabul
+            
+
+            </p>
+
+
+            <p> <em>  <b> Our Approach  </b> </em> <p>
+
+
+
+            <!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/XGSy3_Czz8k"> </iframe> -->                
+        </div><!-- /.blurb -->
+    </div><!-- /.container -->
+
+    <p> <em> <b> references </b> </em> <p>
+    <ul style="list-style: none; padding: 0; margin: 0">
+        <li>Fuji, Taiki, et al. "Deep Multi-Agent Reinforcement Learning using DNN-Weight Evolution to Optimize Supply Chain Performance." Proceedings of the 51st Hawaii International Conference on System Sciences. 2018.</li>
+        <li>Matignon, Laëtitia, Guillaume J. Laurent, and Nadine Le Fort-Piat. "Hysteretic q-learning: an algorithm for decentralized reinforcement learning in cooperative multi-agent teams." Intelligent Robots and Systems, 2007. IROS 2007. IEEE/RSJ International Conference on. IEEE, 2007.</li>
+        <li>Hausknecht, Matthew, and Peter Stone. "Deep recurrent q-learning for partially observable mdps." CoRR, abs/1507.06527 (2015).</li>
+        <li>Lauer, Martin, and Martin Riedmiller. "An algorithm for distributed reinforcement learning in cooperative multi-agent systems." In Proceedings of the Seventeenth International Conference on Machine Learning. 2000.</li>
+        <li>Omidshafiei, Shayegan, et al. "Deep Decentralized Multi-task Multi-Agent RL under Partial Observability." arXiv preprint arXiv:1703.06182 (2017).</li>
+        <li> Crone, Sven F., and Nikolaos Kourentzes. "Feature selection for time series prediction–A combined filter and wrapper approach for neural networks." Neurocomputing 73.10-12 (2010): 1923-1936.
+ </li>
+        <li> </li>
+    </ul>
+
+    <footer>
+        <ul>
+            <li><a href="mailto:oroojlooy@gmail.com">email</a></li>
+            <!-- <li><a href="https://github.com/oroojlooy">github.com/oroojlooy</a></li> -->
+            <li><a href="https://scholar.google.com/citations?user=7nEdMAMAAAAJ&hl=en">Google Scholar</a></li>
+            <li><a href="https://www.linkedin.com/in/afshin-oroojlooy-81663b38/">LinkedIn</a></li>
+        </ul>
+    </footer>        
+</body>
+</html>
+
